@@ -3,7 +3,7 @@
 #Decentralized but centralized
 
 
-!(http://nvie.com/img/2010/01/centr-decentr.png)
+![git flow](http://nvie.com/img/2010/01/centr-decentr.png)
 
 
 The repository setup that we use and that works well with this branching model, is that with a central “truth” repo. Note that this repo is only considered to be the central one (since Git is a DVCS, there is no such thing as a central repo at a technical level). We will refer to this repo as origin, since this name is familiar to all Git users.
@@ -24,7 +24,7 @@ Basicamente o modelo de desenvolvimento é inspirado nos modelos que existem por
  * master
  * develop
 
- !(http://nvie.com/img/2009/12/bm002.png)
+ ![git flow](http://nvie.com/img/2009/12/bm002.png)
 
 O _branch_ _master_ e _origin_ devem ser familiar a todos os utilizadores _Git_, outro branch existente é chamado de _develop_.
 
@@ -61,7 +61,7 @@ Cada um destes _branches_ tem um propósito específico e são obrigado a seguir
 ##_Feature branches_
 
 
-!(http://nvie.com/img/2009/12/fb.png)
+![git flow](http://nvie.com/img/2009/12/fb.png)
 
 Rules:
  * Só pode ter como origem o _branch_: develop
@@ -110,7 +110,7 @@ Terminado o desenvolvimento do recurso é hora de mescla-lo (_merge_) de volta p
 A _flag_ --no-ff diz para o _merge_ sempre criar um novo _commit_, mesmo que o _merge_ podesse ser criado com o _fast-forward_. Isso evita a perda de informações sobre a existência histórica de um ramo de recurso e agrupa todas as submissões que juntos foi adicionado o recurso. Compare:
 
 
-!(http://nvie.com/img/2010/01/merge-without-ff.png)
+![git flow](http://nvie.com/img/2010/01/merge-without-ff.png)
 
 
 No ultimo caso é impossivel dizeres olhando para o _Git history_ qual o commit (e _branch_) que implementou o novo recurso. Voce teria que ler manualmente todas as mensagens de log. Reverter um grupo de _commits_ é uma chatisse que poderia evitar usando --no-ff.
@@ -218,6 +218,6 @@ Agora estamos realmente prontos e o _release_ _branch_ pode ser removido. Nós n
 ##Hotfix branches
 
 
-!(http://nvie.com/img/2010/01/hotfix-branches1.png)
+![git flow](http://nvie.com/img/2010/01/hotfix-branches1.png)
 
 
