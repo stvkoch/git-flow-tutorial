@@ -88,8 +88,7 @@ h3. Criando um _feature branch_
 Quando começamos a trabalhar em um novo recurso o _branch_ deve vir do _branch_ _develop_.
 
 
-bc.
-$ git checkout -b myfeature develop
+bc.$ git checkout -b myfeature develop
 #Switched to a new branch "myfeature"
 
 
@@ -100,8 +99,7 @@ h3. Incorporando _feature_ no _develop branch_
 Terminado o desenvolvimento do recurso é hora de mescla-lo (_merge_) de volta para o _branch_ de _develop_ e finalmente adicionar a versão que será lançada:
 
 
-bc.
-$ git checkout develop
+bc.$ git checkout develop
 #Switched to branch 'develop'
 $ git merge --no-ff myfeature
 #Updating ea1b82a..05e9557
@@ -157,8 +155,7 @@ h3. Criando _release branch_
 _Release branches_ são criado *a partir do* _branch develop_. Por exemplo, digamos que a versão 1.1.5 é a versão lançada a produção e há planeado um grande lançamento. O estado do desenvolvimento está pronto para o próximo lançamento e decidimos que a versão será a 1.2 (ao inves de 1.1.6 ou 2.0).Então ramificamos o _branch_ _develop_ para um novo _release_ _branch_ com um nome que reflete a nova versão:
 
 
-bc.
-$ git checkout -b release-1.2 develop
+bc.$ git checkout -b release-1.2 develop
 #Switched to a new branch "release-1.2"
 $ ./bump-version.sh 1.2
 #Files modified successfully, version bumped to 1.2.
@@ -183,8 +180,7 @@ Quando achares que o _release_ _branch_ actual está pronto para ser tornar em u
 
 As primeiros duas etapas do _Git_:
 
-bc.
-$ git checkout master
+bc.$ git checkout master
 #Altera para branch 'master'
 $ git merge --no-ff release-1.2
 #Mescla as mudanças do branch release-1.2 para o branch atual recursivamente.
@@ -201,8 +197,7 @@ Talvez queira usar as _flags_ -s ou -u para assinar criptograficamente a _tag_.
 
 Para mantes as mudanças feitas no _release_ _branch_, nós precisamos mescla-las ao _branch_ _develop_:
 
-bc.
-$ git checkout develop
+bc.$ git checkout develop
 #Altera para o branch 'develop'
 $ git merge --no-ff release-1.2
 #Mescla as mudanças do branch release-1.2 para o branch atual recursivamente.
@@ -214,8 +209,7 @@ Esta etapa pode levar a alguns conflitos, se assim for corrija-os e faço o comm
 Agora estamos realmente prontos e o _release_ _branch_ pode ser removido. Nós não precisamos mais dele.
 
 
-bc.
-$ git branch -d release-1.2
+bc.$ git branch -d release-1.2
 #Deleted branch release-1.2 (was ff452fe).
 
 
