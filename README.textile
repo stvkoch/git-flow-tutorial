@@ -4,7 +4,7 @@
 
 
 
-http://nvie.com/img/2010/01/centr-decentr.png
+!!http://nvie.com/img/2010/01/centr-decentr.png
 
 
 
@@ -27,7 +27,7 @@ Basicamente o modelo de desenvolvimento é inspirado nos modelos que existem por
  * master
  * develop
 
- http://nvie.com/img/2009/12/bm002.png
+ !http://nvie.com/img/2009/12/bm002.png
 
 O _branch_ _master_ e _origin_ devem ser familiar a todos os utilizadores _Git_, outro branch existente é chamado de _develop_.
 
@@ -64,7 +64,7 @@ Cada um destes _branches_ tem um propósito específico e são obrigado a seguir
 h2. _Feature branches_
 
 
-http://nvie.com/img/2009/12/fb.png
+!http://nvie.com/img/2009/12/fb.png
 
 Rules:
  * Só pode ter como origem o _branch_: develop
@@ -113,7 +113,7 @@ $ git push origin develop
 A _flag_ --no-ff diz para o _merge_ sempre criar um novo _commit_, mesmo que o _merge_ podesse ser criado com o _fast-forward_. Isso evita a perda de informações sobre a existência histórica de um ramo de recurso e agrupa todas as submissões que juntos foi adicionado o recurso. Compare:
 
 
-http://nvie.com/img/2010/01/merge-without-ff.png
+!http://nvie.com/img/2010/01/merge-without-ff.png
 
 
 No ultimo caso é impossivel dizeres olhando para o _Git history_ qual o commit (e _branch_) que implementou o novo recurso. Voce teria que ler manualmente todas as mensagens de log. Reverter um grupo de _commits_ é uma chatisse que poderia evitar usando --no-ff.
@@ -220,6 +220,6 @@ bc.$ git branch -d release-1.2
 h2. Hotfix branches
 
 
-http://nvie.com/img/2010/01/hotfix-branches1.png
+!http://nvie.com/img/2010/01/hotfix-branches1.png
 
 
