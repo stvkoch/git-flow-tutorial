@@ -1,3 +1,4 @@
+Original POST: http://nvie.com/posts/a-successful-git-branching-model/
 
 
 #Decentralized but centralized
