@@ -222,3 +222,64 @@ Agora estamos realmente prontos e o _release_ _branch_ pode ser removido. Nós n
 ![git flow](http://nvie.com/img/2010/01/hotfix-branches1.png)
 
 
+Pode ser ramificado ('checkout') de master
+Deve ser mesclado (_merge_) de volta ao _branch_ _develop_ *e* _master_
+Nomeclatura segue a conveção de começar com: hotfix-*
+
+
+Ramos *Hotfix*  são muito parecidos como _release_ _branches_ no aspecto que também servem para preparar novos lançamentos de versões que irão para produção, ainda que não planeadas(geralmente mesclados de volta ao branch master). Eles surgem da necessidade de uma *ação* imediata de um estado indesejado na versão do codigo em produção. Quanto mais crítico é o BUG mais rápido deve ser resolvido e mais rápido devem ser mesclados com o _master_. Um _branch_ _hotfix_ talvez seja ramificado apartir de uma correspondente _tag_ no _branch_ _master_ que marca uma possição de uma versão em produção.
+
+Importante ressaltar que usando o modelo de _branch_ _hotfix-*_ a equipa de desenvolvedores pode continuar trabalhando em novas _features_ enquanto outros trabalham em preparar um atualização de emergência.
+
+
+
+###Criando um _branch_ hotfix
+
+
+Ramos _Hotfix_ são criados apartir de um _branch_ _master_. Por exemplo, digamos que a versão 1.2 é a última versão lançada e está causando alguns problemas com varios bugs detectados. Mas as alterações em desenvolvimento (_branch_ _developer_) ainda não estão totalmente prontas e testadas. We may then branch off a hotfix branch and start fixing the problem:
+
+$ git checkout -b hotfix-1.2.1 master
+Switched to a new branch "hotfix-1.2.1"
+$ ./bump-version.sh 1.2.1
+Files modified successfully, version bumped to 1.2.1.
+$ git commit -a -m "Bumped version number to 1.2.1"
+[hotfix-1.2.1 41e61bb] Bumped version number to 1.2.1
+1 files changed, 1 insertions(+), 1 deletions(-)
+Don’t forget to bump the version number after branching off!
+
+Then, fix the bug and commit the fix in one or more separate commits.
+
+$ git commit -m "Fixed severe production problem"
+[hotfix-1.2.1 abbe5d6] Fixed severe production problem
+5 files changed, 32 insertions(+), 17 deletions(-)
+Finishing a hotfix branch
+
+When finished, the bugfix needs to be merged back into master, but also needs to be merged back into develop, in order to safeguard that the bugfix is included in the next release as well. This is completely similar to how release branches are finished.
+
+First, update master and tag the release.
+
+$ git checkout master
+Switched to branch 'master'
+$ git merge --no-ff hotfix-1.2.1
+Merge made by recursive.
+(Summary of changes)
+$ git tag -a 1.2.1
+Edit: You might as well want to use the -s or -u <key> flags to sign your tag cryptographically.
+
+Next, include the bugfix in develop, too:
+
+$ git checkout develop
+Switched to branch 'develop'
+$ git merge --no-ff hotfix-1.2.1
+Merge made by recursive.
+(Summary of changes)
+The one exception to the rule here is that, when a release branch currently exists, the hotfix changes need to be merged into that release branch, instead of develop. Back-merging the bugfix into the release branch will eventually result in the bugfix being merged into develop too, when the release branch is finished. (If work in develop immediately requires this bugfix and cannot wait for the release branch to be finished, you may safely merge the bugfix into develop now already as well.)
+
+Finally, remove the temporary branch:
+
+$ git branch -d hotfix-1.2.1
+Deleted branch hotfix-1.2.1 (was abbe5d6).
+
+
+
+
