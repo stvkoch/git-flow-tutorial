@@ -1,3 +1,5 @@
+[Veja tambem outro post sobre git workflow usando o GitHub.com](https://github.com/stvkoch/workflow-github)
+
 Original POST: http://nvie.com/posts/a-successful-git-branching-model/
 
 
